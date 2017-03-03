@@ -6,7 +6,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width user-scalable=no">
   <title>The Metronome Space - Free Online Metronome with Volume Control</title>
-  <meta name="description" content="Free online metronome with volume controls for music practice. Improve your playing today."
+  <meta name="description" content="Free online metronome with volume controls for music practice. Improve your playing today.">
   <link rel="stylesheet" href="css/main.css">
   <script src="http://cwilso.github.io/AudioContext-MonkeyPatch/AudioContextMonkeyPatch.js"></script>
   <script src="js/metronome.js"></script>
@@ -29,19 +29,27 @@
       <div id="tempoBox">
         <h1 class="text-center bpm-display">
         <span id="showTempo">85</span> BPM</div>
-        </h2>
+        </h1>
+        <!--tempo plus & minus-->
+        <div  class="tempo-controls btn-group d-flex justify-content-center mt-4">
+
+          <a onclick="tempo -= 1; document.getElementById('showTempo').innerText=tempo; document.getElementById('tempo').value=tempo" class="btn btn-outline-secondary tempo-minus">&minus;</a>
+          <a onclick="tempo += 1; document.getElementById('showTempo').innerText=tempo; document.getElementById('tempo').value=tempo" class="btn btn-outline-secondary tempo-plus">&plus;</a>
+        </div>
+        <!--tempo slider-->
       <div class="tempo-slider mt-5">
         <label for="tempo-slider">Tempo</label>
         <input id="tempo" name="tempo-slider" type="range" min="10.0" max="160.0" step="1" value="85"
-          onInput="tempo = event.target.value; document.getElementById('showTempo').innerText=tempo;">
+          onInput="tempo = event.target.value; document.getElementById('showTempo').innerText=tempo; ">
       </div>
+      <!--volume slider-->
       <div class="volume-slider mt-5">
         <label for="vol-slider">Volume</label>
         <input name="vol-slider" id="volume" type="range" min="0.001" max="1" step="0.001" value="0.2"
           onInput="volume = event.target.value;">
        
       </div>
-      
+      <!-- play button-->
       <a id="play-button" class="btn btn-outline-secondary btn-lg btn-block mt-5" onclick="this.innerText = play();">START</a>
     </div>
  

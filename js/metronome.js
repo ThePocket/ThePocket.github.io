@@ -7,9 +7,9 @@ var startTime;              // The start time of the entire sequence.
 var current16thNote;        // What note is currently last scheduled?
 var tempo = 85.0;          // tempo (in beats per minute)
 var volume = 0.1
-var lookahead = 50.0;       // How frequently to call scheduling function 
+var lookahead = 100.0;       // How frequently to call scheduling function 
                             //(in milliseconds)
-var scheduleAheadTime = 0.5;    // How far ahead to schedule audio (sec)
+var scheduleAheadTime = 1;    // How far ahead to schedule audio (sec)
                             // This is calculated from lookahead, and overlaps 
                             // with next interval (in case the timer is late)
 var nextNoteTime = 0.0;     // when the next note is due.
@@ -35,14 +35,18 @@ window.requestAnimFrame = (function(){
 })();
 
 function nextNote() {
-    var secondsPerBeat = 60.0 / tempo;    
-                                          
+    var secondsPerBeat = 60.0 / tempo;                       
     nextNoteTime += 0.25 * secondsPerBeat;    // Add beat length to last beat time
 
     current16thNote++;    
     if (current16thNote == 16) {
         current16thNote = 0;
     }
+}
+
+function change_tempo(amount) {
+    tempo = tempo + amount;
+    return;
 }
 
 function scheduleNote( beatNumber, time ) {
