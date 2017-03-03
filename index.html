@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <!--<meta http-equiv="refresh" content="2">-->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width user-scalable=no">
+  <title>Time Keeper - Free Metronome with Volume Control</title>
+  <link rel="stylesheet" href="css/main.css">
+  <script src="http://cwilso.github.io/AudioContext-MonkeyPatch/AudioContextMonkeyPatch.js"></script>
+  <script src="js/metronome.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ"
+    crossorigin="anonymous">
+
+</head>
+
+<body>
+  <div class="container">
+    <div class="row">
+      <div class="col"></div>
+      <div class="col">
+    <h2 class="hero-text text-center text-uppercase">Time Keeper</h2>
+    <p class="text-center">Precision Metronome</p>
+
+      </div>
+      <div class="col"></div>
+    </div>
+      <div id="tempoBox">
+        <h1 class="text-center bpm-display">
+        <span id="showTempo">85</span> BPM</div>
+        </h2>
+      <div class="tempo-slider mt-5">
+        <label for="tempo-slider">Tempo</label>
+        <input id="tempo" name="tempo-slider" type="range" min="10.0" max="160.0" step="1" value="85"
+          onInput="tempo = event.target.value; document.getElementById('showTempo').innerText=tempo;">
+      </div>
+      <div class="volume-slider mt-5">
+        <label for="vol-slider">Volume</label>
+        <input name="vol-slider" id="volume" type="range" min="0.001" max="1" step="0.001" value="0.2"
+          onInput="volume = event.target.value;">
+       
+      </div>
+      
+      <a id="play-button" class="btn btn-outline-secondary btn-lg btn-block mt-5" onclick="this.innerText = play();">START</a>
+      <!--<div>Resolution:<select onchange="noteResolution = this.selectedIndex;"><option>Quarter notes<option>8th notes<option>16th notes</select></div>-->
+    </div>
+  <!--scripts-->
+  <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb"
+    crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn"
+    crossorigin="anonymous"></script>
+<script>
+  document.body.onkeyup = function(e){
+    if(e.keyCode == 32){
+        document.getElementById('play-button').innerText = play();
+    }
+}
+</script>
+
+</body>
+
+</html>
