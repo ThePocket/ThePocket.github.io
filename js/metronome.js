@@ -9,7 +9,7 @@ var tempo = 85.0;          // tempo (in beats per minute)
 var volume = 0.1
 var lookahead = 50.0;       // How frequently to call scheduling function 
                             //(in milliseconds)
-var scheduleAheadTime = 0.3;    // How far ahead to schedule audio (sec)
+var scheduleAheadTime = 0.5;    // How far ahead to schedule audio (sec)
                             // This is calculated from lookahead, and overlaps 
                             // with next interval (in case the timer is late)
 var nextNoteTime = 0.0;     // when the next note is due.
@@ -35,26 +35,26 @@ window.requestAnimFrame = (function(){
 })();
 
 function nextNote() {
-    var secondsPerBeat = 60.0 / tempo;    // Notice this picks up the CURRENT 
-                                          // tempo value to calculate beat length.
+    var secondsPerBeat = 60.0 / tempo;    
+                                          
     nextNoteTime += 0.25 * secondsPerBeat;    // Add beat length to last beat time
 
-    current16thNote++;    // Advance the beat number, wrap to zero
+    current16thNote++;    
     if (current16thNote == 16) {
         current16thNote = 0;
     }
 }
 
 function scheduleNote( beatNumber, time ) {
-    // push the note on the queue, even if we're not playing.
+  
     notesInQueue.push( { note: beatNumber, time: time } );
 
     if ( (noteResolution==1) && (beatNumber%2))
-        return; // we're not playing non-8th 16th notes
+        return; 
     if ( (noteResolution==2) && (beatNumber%4))
-        return; // we're not playing non-quarter 8th notes
+        return; 
 
-    // create an oscillator
+   
     var osc = audioContext.createOscillator();
     osc.type = "sawtooth"
     var gainNode = audioContext.createGain();
@@ -73,9 +73,9 @@ function scheduleNote( beatNumber, time ) {
     
     if (beatNumber % 16 === 0)   
         osc.frequency.value = 400.0;
-    else if (beatNumber % 4 === 0 )    // quarter notes = medium pitch
+    else if (beatNumber % 4 === 0 )    
         osc.frequency.value = 400.0	;
-    else                        // other 16th notes = low pitch
+    else                       
         osc.frequency.value = 500;
 
     osc.start( time );
@@ -94,7 +94,7 @@ function scheduler() {
 function play() {
     isPlaying = !isPlaying;
 
-    if (isPlaying) { // start playing
+    if (isPlaying) { 
         current16thNote = 0;
         nextNoteTime = audioContext.currentTime;
         timerWorker.postMessage("start");
@@ -106,11 +106,8 @@ function play() {
 }
 
 function resetCanvas (e) {
-    // resize the canvas - but remember - this clears the canvas too.
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
-
-    //make sure we scroll to the top left.
     window.scrollTo(0,0); 
 }
 
