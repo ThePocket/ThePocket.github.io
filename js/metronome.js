@@ -76,11 +76,11 @@ function scheduleNote( beatNumber, time ) {
 
     
     if (beatNumber % 16 === 0)   
-        osc.frequency.value = 400.0;
+        osc.frequency.value = 523.25;
     else if (beatNumber % 4 === 0 )    
-        osc.frequency.value = 400.0	;
+        osc.frequency.value = 523.25	;
     else                       
-        osc.frequency.value = 500;
+        osc.frequency.value = 523.25;
 
     osc.start( time );
     osc.stop( time + noteLength );
