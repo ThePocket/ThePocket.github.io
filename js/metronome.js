@@ -178,3 +178,17 @@ function init(){
 
 window.addEventListener("load", init );
 
+window.addEventListener('touchstart', function() {
+
+	// create new buffer source for playback with an already
+	// loaded and decoded empty sound file
+	var source = AudioContext.createBufferSource();
+	source.buffer = myDecodedBuffer;
+
+	// connect to output (your speakers)
+	source.connect(AudioContext.destination);
+
+	// play the file
+	source.noteOn(0);
+
+}, false);
