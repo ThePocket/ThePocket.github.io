@@ -7,7 +7,7 @@ var startTime;              // The start time of the entire sequence.
 var current16thNote;        // What note is currently last scheduled?
 var tempo = 85.0;          // tempo (in beats per minute)
 var volume = 0.1
-var lookahead = 100.0;       // How frequently to call scheduling function 
+var lookahead = 50.0;       // How frequently to call scheduling function 
                             //(in milliseconds)
 var scheduleAheadTime = 0.3;    // How far ahead to schedule audio (sec)
                             // This is calculated from lookahead, and overlaps 
@@ -170,7 +170,7 @@ function init(){
 
     timerWorker.onmessage = function(e) {
         if (e.data == "tick") {
-            // console.log("tick!");
+            console.log("tick!");
             scheduler();
         }
         else
