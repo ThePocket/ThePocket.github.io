@@ -1,4 +1,7 @@
-var audioContext = new AudioContext();
+var AudioContext = window.AudioContext // Default
+    || window.webkitAudioContext // Safari and old versions of Chrome
+    || false; 
+
 var isPlaying = false;      // Are we currently playing?
 var startTime;              // The start time of the entire sequence.
 var current16thNote;        // What note is currently last scheduled?
