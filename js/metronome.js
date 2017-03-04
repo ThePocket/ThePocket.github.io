@@ -5,7 +5,7 @@ var AudioContext = window.AudioContext // Default
 var isPlaying = false;      // Are we currently playing?
 var startTime;              // The start time of the entire sequence.
 var current16thNote;        // What note is currently last scheduled?
-var tempo = 85.0;          // tempo (in beats per minute)
+var tempo = 85;          // tempo (in beats per minute)
 var volume = 0.1
 var lookahead = 100.0;       // How frequently to call scheduling function 
                             //(in milliseconds)
