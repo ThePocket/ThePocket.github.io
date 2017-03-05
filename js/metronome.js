@@ -69,7 +69,7 @@ function scheduleNote( beatNumber, time ) {
     eq.frequency.value = 300;
     eq2 = audioContext.createBiquadFilter();
     eq2.type = "lowpass";
-    eq2.frequency.value = 900;
+    eq2.frequency.value = 1500;
     gainNode.connect(eq)
     eq.connect(eq2)
     eq2.connect(audioContext.destination);
