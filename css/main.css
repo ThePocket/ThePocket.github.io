@@ -95,3 +95,8 @@ h2.hero-text {
 	padding-bottom: 0.75rem;
 	border-bottom: 2px dotted black;
 }
+
+div.keyboard-shortcuts > ul {
+  list-style: none;
+  padding-left: 0;
+}

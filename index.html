@@ -1,71 +1,73 @@
 <!DOCTYPE html>
 <html>
-
 <head>
   <!--<meta http-equiv="refresh" content="2">-->
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width user-scalable=no">
-  <title>The Metronome Space - Free Online Metronome with Volume Control</title>
+  <title>Metronome.space - Free Online Metronome with Volume Control</title>
   <meta name="description" content="Free online metronome with volume controls for music practice. Improve your playing today.">
   <link rel="stylesheet" href="css/main.css">
   <script src="http://cwilso.github.io/AudioContext-MonkeyPatch/AudioContextMonkeyPatch.js"></script>
   <script src="js/metronome.js"></script>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ"
     crossorigin="anonymous">
-
 </head>
-
 <body>
   <div class="container">
-    <div class="row">
-      <div class="col"></div>
-      <div class="col">
-    <h2 class="hero-text text-center text-uppercase">The Metronome Space</h2>
-    <p class="text-center">Your Precision Metronome.</p>
-
-      </div>
-      <div class="col"></div>
+    <div class="row">   
+        <h2 class="hero-text text-uppercase">Metronome.space</h2>
     </div>
-      <div id="tempoBox">
-        <h1 class="text-center bpm-display">
+    <div id="tempoBox">
+      <h1 class="text-center bpm-display">
         <span id="showTempo">85</span> BPM</div>
-        </h1>
-        <!--tempo plus & minus-->
-        <div  class="tempo-controls btn-group d-flex justify-content-center mt-4">
+    </h1>
+    <!--tempo buttons-->
+    <div class="tempo-controls btn-group d-flex justify-content-center mt-4">
 
-          <button onclick="tempo -= 1; document.getElementById('showTempo').innerText=tempo; document.getElementById('tempo').value=tempo" class="btn btn-outline-secondary tempo-minus">&minus;</button>
-          <button onclick="tempo += 1; document.getElementById('showTempo').innerText=tempo; document.getElementById('tempo').value=tempo" class="btn btn-outline-secondary tempo-plus">&plus;</button>
-        </div>
-        <!--tempo slider-->
-      <div class="tempo-slider mt-5">
-        <label for="tempo-slider">Tempo</label>
-        <input id="tempo" name="tempo-slider" type="range" min="10.0" max="160.0" step="1" value="85"
-          onInput="tempo = event.target.value; document.getElementById('showTempo').innerText=tempo; ">
-      </div>
-      <!--volume slider-->
-      <div class="volume-slider mt-5">
-        <label for="vol-slider">Volume</label>
-        <input name="vol-slider" id="volume" type="range" min="0.001" max="1" step="0.001" value="0.2"
-          onInput="volume = event.target.value;">
-       
-      </div>
-      <!-- play button-->
-      <a id="play-button" class="btn btn-outline-secondary btn-lg btn-block mt-5" onclick="this.innerText = play();">START</a>
+      <button onclick="tempo -= 1; document.getElementById('showTempo').innerText=tempo; document.getElementById('tempo').value=tempo"
+        class="btn btn-outline-secondary tempo-minus">&minus;</button>
+      <button onclick="tempo += 1; document.getElementById('showTempo').innerText=tempo; document.getElementById('tempo').value=tempo"
+        class="btn btn-outline-secondary tempo-plus">&plus;</button>
     </div>
- 
+    <!--tempo slider-->
+    <div class="tempo-slider mt-5">
+      <label for="tempo-slider">Tempo</label>
+      <input id="tempo" name="tempo-slider" type="range" min="10.0" max="160.0" step="1" value="85" onInput="tempo -= 1; document.getElementById('showTempo').innerText=tempo; document.getElementById('tempo').value=tempo">
+    </div>
+    <!--volume slider-->
+    <div class="volume-slider mt-5">
+      <label for="vol-slider">Volume</label>
+      <input name="vol-slider" id="volume" type="range" min="0.001" max="1" step="0.001" value="0.2" onInput="volume = event.target.value;">
+
+    </div>
+    <!-- play button-->
+    <a id="play-button" class="btn btn-outline-secondary btn-lg btn-block mt-5" onclick="this.innerText = play();">START</a>
+<div class="keyboard-shortcuts pt-5">
+<h3>Keyboard Shortcuts</h3>
+<ul>
+  <li>Spacebar : Start / Stop</li>
+  <li>Right Arrow : Increase Tempo</li>
+  <li>Left Arrow : Decrease Tempo</li>
+</ul>
+</div>
+
+</div>
+
   <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n"
     crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb"
     crossorigin="anonymous"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn"
     crossorigin="anonymous"></script>
-<script>
-  document.body.onkeyup = function(e){
-    if(e.keyCode == 32){
+  <script>
+    document.body.onkeyup = function (e) {
+      if (e.keyCode == 32) {
         document.getElementById('play-button').innerText = play();
+      }
     }
-}
-</script>
+
+ 
+  </script>
 
 </body>
 

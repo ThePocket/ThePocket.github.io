@@ -9,18 +9,20 @@ var tempo = 85;          // tempo (in beats per minute)
 var volume = 0.1
 var lookahead = 100.0;       // How frequently to call scheduling function 
                             //(in milliseconds)
-var scheduleAheadTime = 1;    // How far ahead to schedule audio (sec)
+var scheduleAheadTime = 0.120;    // How far ahead to schedule audio (sec)
                             // This is calculated from lookahead, and overlaps 
                             // with next interval (in case the timer is late)
 var nextNoteTime = 0.0;     // when the next note is due.
 var noteResolution = 2;     // 0 == 16th, 1 == 8th, 2 == quarter note
-var noteLength = 0.0300;      // length of "beep" (in seconds)
+var noteLength = 0.0300;    // length of "beep" (in seconds)
 var canvas,                 // the canvas element
     canvasContext;          // canvasContext is the canvas' context 2D
 var last16thNoteDrawn = -1; // the last "box" we drew on the screen
 var notesInQueue = [];      // the notes that have been put into the web audio,
                             // and may or may not have played yet. {note, time}
-var timerWorker = null;     // The Web Worker used to fire timer messages
+var timerWorker = new Worker("js/metronomeworker.js");
+
+
 
 
 window.requestAnimFrame = (function(){
@@ -44,8 +46,9 @@ function nextNote() {
     }
 }
 
-function change_tempo(amount) {
+function change_tempo(amount, tempo) {
     tempo = tempo + amount;
+    // document.getElementById('showTempo').innerText=tempo;
     return;
 }
 
@@ -57,7 +60,8 @@ function scheduleNote( beatNumber, time ) {
         return; 
     if ( (noteResolution==2) && (beatNumber%4))
         return; 
-
+    
+    
    
     var osc = audioContext.createOscillator();
     osc.type = "sawtooth"
@@ -113,6 +117,11 @@ function resetCanvas (e) {
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
     window.scrollTo(0,0); 
+}
+
+function update_tempo_slider() {
+    tempo = event.target.value; 
+    document.getElementById('showTempo').innerText = tempo; document.getElementById('tempo').value = tempo;
 }
 
 function draw() {
