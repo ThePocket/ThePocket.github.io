@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <!--<meta http-equiv="refresh" content="2">-->
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width user-scalable=no">
-  <title>Metronome.space - Free Online Metronome with Volume Control</title>
+  <title>Metronome.space - Free Online Metronome with Adjustable Volume</title>
   <meta name="description" content="Free online metronome with volume controls for music practice. Improve your playing today.">
   <link rel="stylesheet" href="css/main.css">
   <script src="http://cwilso.github.io/AudioContext-MonkeyPatch/AudioContextMonkeyPatch.js"></script>
@@ -12,10 +13,11 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ"
     crossorigin="anonymous">
 </head>
+
 <body>
   <div class="container">
-    <div class="row">   
-        <h2 class="hero-text text-uppercase">Metronome.space</h2>
+    <div class="row">
+      <h2 class="hero-text text-uppercase">Metronome.space</h2>
     </div>
     <div id="tempoBox">
       <h1 class="text-center bpm-display">
@@ -42,14 +44,23 @@
     </div>
     <!-- play button-->
     <a id="play-button" class="btn btn-outline-secondary btn-lg btn-block mt-5" onclick="this.innerText = play();">START</a>
-<div class="keyboard-shortcuts pt-5">
-<h3>Keyboard Shortcuts</h3>
+    <div class="keyboard-shortcuts pt-5">
+      <h3>Keyboard Shortcuts</h3>
+      <ul>
+        <li>Spacebar : Start / Stop</li>
+      </ul>
+    </div>
+<div class="how-to">
+<h4>How To Use A Metronome</h4>
 <ul>
-  <li>Spacebar : Start / Stop</li>
+  <li>Set the tempo to a moderately slow tempo (say 85bpm), and tap your foot, clap or bang something along with the beat. Try to get your taps or claps happening at exactly the same time as the click of the metronome. This might be tricky at first, but becomes natural and unconscious with practice. If you like to tap your foot or nod your head when you are listening to music, this is the same idea as that. </li>
+  <li>Try drawing out a circle in the air with your hand, and keep looping it around so you make one revolution every click. Do this in whatever way or shape feels comfortable to you. The idea is this kind of looping motion can help you <em>feel</em> the time in between the clicks. It is a little like dancing. When you begin to feel the groove of the metronome, you're in the right place.</li>
+  <li>Try feel out where the middle of the clicks is. If each of the clicks is a 1/4 note, then this halfway point is an 1/8th note. </li>
+  <li></li>
 </ul>
-</div>
 
 </div>
+  </div>
 
   <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n"
     crossorigin="anonymous"></script>
@@ -63,8 +74,6 @@
         document.getElementById('play-button').innerText = play();
       }
     }
-
- 
   </script>
 
 </body>
