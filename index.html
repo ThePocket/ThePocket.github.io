@@ -24,38 +24,46 @@
         <span id="showTempo">85</span> BPM</div>
     </h1>
     <!--tempo buttons-->
-    <div class="tempo-controls btn-group d-flex justify-content-center mt-4">
-
-      <button onclick="tempo -= 1; document.getElementById('showTempo').innerText=tempo; document.getElementById('tempo').value=tempo"
+    <!--<div class="tempo-controls btn-group d-flex justify-content-center mt-4">-->
+<!--
+      <button onclick="decrease_tempo();"
         class="btn btn-outline-secondary tempo-minus">&minus;</button>
-      <button onclick="tempo += 1; document.getElementById('showTempo').innerText=tempo; document.getElementById('tempo').value=tempo"
-        class="btn btn-outline-secondary tempo-plus">&plus;</button>
-    </div>
+      <button onclick="document.getElementById('tempo').value=tempo+1"
+        class="btn btn-outline-secondary tempo-plus">&plus;</button>-->
+    <!--</div>-->
     <!--tempo slider-->
-    <div class="tempo-slider mt-5">
-      <label for="tempo-slider">Tempo</label>
-      <input id="tempo" name="tempo-slider" type="range" min="10.0" max="160.0" step="1" value="85" onInput="tempo -= 1; document.getElementById('showTempo').innerText=tempo; document.getElementById('tempo').value=tempo">
+    <div class="tempo-slider range-slider mt-5">
+      <h3>Tempo</h3>
+      <input id="tempo" class="range-slider__range" name="tempo-slider" type="range" min="10.0" max="160.0" step="1" value="85" onInput="tempo=this.value; document.getElementById('showTempo').innerText=tempo">
     </div>
     <!--volume slider-->
-    <div class="volume-slider mt-5">
-      <label for="vol-slider">Volume</label>
-      <input name="vol-slider" id="volume" type="range" min="0.001" max="1" step="0.001" value="0.2" onInput="volume = event.target.value;">
+    <div class="volume-slider range-slider mt-5">
+      <h3>Volume</h3>
+      <input name="vol-slider" class="range-slider__range" id="volume" type="range" min="0.001" max="1" step="0.001" value="0.2" onInput="volume = event.target.value;">
 
     </div>
     <!-- play button-->
     <a id="play-button" class="btn btn-outline-secondary btn-lg btn-block mt-5" onclick="this.innerText = play();">START</a>
     <div class="keyboard-shortcuts pt-5">
-      <h3>Keyboard Shortcuts</h3>
-      <ul>
-        <li>Spacebar : Start / Stop</li>
-      </ul>
+      <h4 class="pb-5">Keyboard Shortcuts</h4>
+      <div class="row">
+        <div class="col-sm-6">
+        <p class="mt-4">Start / Stop Metronome:</p>
+
+        </div>
+        <div class="col-sm-6">
+        <p class="key-display">m</p>
+        </div>
+      </div>
+      
     </div>
-<div class="how-to">
+<div class="how-to mt-5">
 <h4>How To Use A Metronome</h4>
 <ul>
-  <li>Set the tempo to a moderately slow tempo (say 85bpm), and tap your foot, clap or bang something along with the beat. Try to get your taps or claps happening at exactly the same time as the click of the metronome. This might be tricky at first, but becomes natural and unconscious with practice. If you like to tap your foot or nod your head when you are listening to music, this is the same idea as that. </li>
+  <li>Set the tempo to a moderately slow tempo (say 85bpm), and tap your foot, clap or bang something along with the beat. Try to get your taps or claps to line up exactly with the click of the metronome. </li>
   <li>Try drawing out a circle in the air with your hand, and keep looping it around so you make one revolution every click. Do this in whatever way or shape feels comfortable to you. The idea is this kind of looping motion can help you <em>feel</em> the time in between the clicks. It is a little like dancing. When you begin to feel the groove of the metronome, you're in the right place.</li>
-  <li>Try find where the mid spot is between each pair of clicks. If each of these clicks is a 1/4 note, then this halfway point is an 1/8th note. </li>
+  <li>Try find where the mid spot is between each pair of clicks. If each of these clicks is a 1/4 note, then this halfway point is an 1/8th note.</li>
+  <li>Play along with the metronome to improve your timing and feel on your instrument.</li>
 </ul>
 
 </div>
@@ -69,11 +77,56 @@
     crossorigin="anonymous"></script>
   <script>
     document.body.onkeyup = function (e) {
-      if (e.keyCode == 32) {
+      if (e.keyCode == 77) {
         document.getElementById('play-button').innerText = play();
       }
     }
   </script>
+
+<script>
+
+
+$(function() {
+   
+  var rangeSlider = function(){
+  var slider = $('.range-slider'),
+      range = $('.range-slider__range'),
+      value = $('.range-slider__value');
+    
+  slider.each(function(){
+
+    value.each(function(){
+      var value = $(this).prev().attr('value');
+      $(this).html(value);
+    });
+
+    range.on('input', function(){
+      $(this).next(value).html(this.value);
+    });
+  });
+};
+
+rangeSlider();
+   
+});
+
+
+  // $(document).ready(function({
+  // })
+
+    // Initialize a new plugin instance for all
+    // e.g. $('input[type="range"]') elements.
+
+    // Destroy all plugin instances created from the
+    // e.g. $('input[type="range"]') elements.
+    // $('input[type="range"]').rangeslider('destroy');
+
+    // Update all rangeslider instances for all
+    // e.g. $('input[type="range"]') elements.
+    // Usefull if you changed some attributes e.g. `min` or `max` etc.
+    // $('input[type="range"]').rangeslider('update', true);
+  
+</script>
 
 </body>
 

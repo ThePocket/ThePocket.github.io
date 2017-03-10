@@ -48,8 +48,13 @@ function nextNote() {
 
 function change_tempo(amount, tempo) {
     tempo = tempo + amount;
-    // document.getElementById('showTempo').innerText=tempo;
     return;
+}
+
+function decrease_tempo(tempo) {
+    tempo = tempo - 1;
+    console.log('decrease tempo')
+    return tempo;
 }
 
 function scheduleNote( beatNumber, time ) {

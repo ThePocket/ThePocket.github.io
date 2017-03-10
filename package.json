@@ -1,0 +1,26 @@
+{
+  "name": "metronome.space",
+  "version": "0.0.1",
+  "description": "The greatest metronome is history.",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ThePocket/ThePocket.github.io.git"
+  },
+  "keywords": [
+    "metronome"
+  ],
+  "author": "Donncha O'Toole",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ThePocket/ThePocket.github.io/issues"
+  },
+  "homepage": "https://github.com/ThePocket/ThePocket.github.io#readme",
+  "dependencies": {
+    "jquery": "^3.1.1",
+    "rangeslider.js": "^2.3.0"
+  }
+}
