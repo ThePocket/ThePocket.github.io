@@ -6,12 +6,12 @@ var isPlaying = false;
 var startTime;              
 var current16thNote;        
 var tempo = 85;          
-var volume = 0.1
+var volume = 0.2
 var lookahead = 100.0;     
 var scheduleAheadTime = 0.120;
 var nextNoteTime = 0.0;     
 var noteResolution = 2;     
-var noteLength = 0.0300;    
+var noteLength = 0.0200;    
 var canvas,                 
     canvasContext;          
 var last16thNoteDrawn = -1; 
@@ -71,21 +71,21 @@ function scheduleNote( beatNumber, time ) {
     gainNode.gain.value = volume;
     eq = audioContext.createBiquadFilter();
     eq.type = "highpass";
-    eq.frequency.value = 300;
+    eq.frequency.value = 500;
     eq2 = audioContext.createBiquadFilter();
     eq2.type = "lowpass";
-    eq2.frequency.value = 1500;
+    eq2.frequency.value = 2500;
     gainNode.connect(eq)
     eq.connect(eq2)
     eq2.connect(audioContext.destination);
 
     
     if (beatNumber % 16 === 0)   
-        osc.frequency.value = 523.25;
+        osc.frequency.value = 800;
     else if (beatNumber % 4 === 0 )    
-        osc.frequency.value = 523.25	;
+        osc.frequency.value = 800	;
     else                       
-        osc.frequency.value = 523.25;
+        osc.frequency.value = 800;
 
     osc.start( time );
     osc.stop( time + noteLength );
